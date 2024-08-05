@@ -1,1 +1,63 @@
-txt
+9:50 AM
+
+Command
+Redhat
+Log in check subscription before
+subscription-manager
+subscription-manager list
+pm2 list --> pm2 save   
+yum -y update --security ถ้า dependensi ให้ yum update
+# after reboot check
+rpm -q kernel
+uname -r
+# Rhel 7
+package-cleanup --oldkernels --count=1
+# Rhel 8
+dnf remove --oldinstallonly --setopt installonly_limit=2 kernel -y
+
+rpm -qa --last | more
+
+pm2 resurrect
+
+yum updateinfo list security all > listpatch.txt
+
+If mount loss
+mount -o remount,rw [file system] [partition]
+
+yum clean all
+
+# ถ้าเกิดกรณีไม่ได้ให้ใช้
+subscription-manager refresh 
+
+subscription-manager list
+subscription-manager remove --all
+subscription-manager unregister
+subscription-manager clean
+subscription-manager list
+
+subscription-manager register --username it-system@maybank-ke.co.th --auto-attach
+ 
+subscription-manager refresh
+
+
+
+subscription-manager register --username it-system@maybank-ke.co.th 
+subscription-manager attach --auto
+
+
+
+Ubuntu
+apt update
+apt-get install -y --only-upgrade $( apt-get --just-print upgrade | awk 'tolower($4) ~ /.*security.*/ || tolower($5) ~ /.*security.*/ {print $2}' | sort | uniq )
+
+more /var/run/reboot-required
+reboot
+
+# after reboot check
+dpkg --list | grep linux-image
+uname -r
+apt --purge autoremove
+
+
+mount -o remount,rw ตามด้วย path /dev/mapper-root   /
+

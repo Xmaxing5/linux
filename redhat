@@ -35,13 +35,13 @@ subscription-manager unregister
 subscription-manager clean
 subscription-manager list
 
-subscription-manager register --username it-system@maybank-ke.co.th --auto-attach
+subscription-manager register --username 
  
 subscription-manager refresh
 
 
 
-subscription-manager register --username it-system@maybank-ke.co.th 
+subscription-manager register --username
 subscription-manager attach --auto
 
 
